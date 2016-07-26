@@ -1,4 +1,0 @@
-:
-npm install react-scripts
-npm run build
-node app.js
