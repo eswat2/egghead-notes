@@ -1,13 +1,14 @@
 # egghead-notes
 [![Dependency Status](https://dependencyci.com/github/eswat2/egghead-notes/badge)](https://dependencyci.com/github/eswat2/egghead-notes)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=egghead-notes&style=flat&svg=1)](https://egghead-notes.herokuapp.com)
 
 I am now using a custom notes server, [**faux-base.herokuapp.com**](https://faux-base.herokuapp.com), to handle reading & writing notes.  The repo for that can be found here: [**faux-base**](https://github.com/eswat2/faux-base)
 
-### BACKGROUND:
+### Background:
 
 I took the [**Build Your First React.js App**](https://egghead.io/courses/build-your-first-react-js-application) by [Tyler McGinnis](https://github.com/tylermcginnis) on [**egghead.io**](https://egghead.io) and decided to continue refining and refactoring the app that was created in that course.  My initial thought was to convert it to [**Redux**](http://redux.js.org/), but i found that a bit daunting since i was still trying to learn **Redux**.  I found a reference to [**Mobx**](https://mobxjs.github.io/mobx/) and after reading a little about it, i decided to try that approach first.  This app is the result of that exploration.
 
-Some of the features include:
+### Features:
 
 - initialized the project with [**create-react-app**](https://github.com/facebookincubator/create-react-app)
 - refined UI elements
@@ -20,6 +21,10 @@ Some of the features include:
 - initializes app from URL if it matches /profile/:username
 - otherwise it reloads last username from local storage
 - a simple navigator for visited usernames
+
+### Deployed:
+
+This app is running on [**egghead-notes.herokuapp.com**](https://egghead-notes.herokuapp.com)
 
 ## create-react-app
 Below you will find some information on how to perform common tasks.  
