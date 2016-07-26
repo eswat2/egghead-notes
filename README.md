@@ -26,6 +26,29 @@ I took the [**Build Your First React.js App**](https://egghead.io/courses/build-
 
 This app is running on [**egghead-notes.herokuapp.com**](https://egghead-notes.herokuapp.com)
 
+The following files are part of the deployment:
+
+```
+build/      - pre-built react app, ready to deploy
+app.js      - the node server which will host the react app
+demon       - a script to run the node server locally
+Procfile    - required for the heroku deployment
+```
+
+You can test the node server locally, using the following:
+
+```
+npm install -g foreman
+npm install -g nodemon
+
+npm install
+sh demon
+```
+
+- [foreman](https://www.npmjs.com/package/foreman)
+- [nodemon](https://www.npmjs.com/package/nodemon)
+
+
 ## create-react-app
 Below you will find some information on how to perform common tasks.  
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
