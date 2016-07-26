@@ -1,7 +1,7 @@
 # egghead-notes
 [![Dependency Status](https://dependencyci.com/github/eswat2/egghead-notes/badge)](https://dependencyci.com/github/eswat2/egghead-notes)
 
-I am now using a custom notes server, [**faux-base**](https://faux-base.herokuapp.com), to handle reading & writing notes.  The repo for that can be found here: [**faux-base**](https://github.com/eswat2/faux-base)
+I am now using a custom notes server, [**faux-base.herokuapp.com**](https://faux-base.herokuapp.com), to handle reading & writing notes.  The repo for that can be found here: [**faux-base**](https://github.com/eswat2/faux-base)
 
 ### BACKGROUND:
 
@@ -9,9 +9,10 @@ I took the [**Build Your First React.js App**](https://egghead.io/courses/build-
 
 Some of the features include:
 
-- initialized the project with [create-react-app]()
+- initialized the project with [**create-react-app**](https://github.com/facebookincubator/create-react-app)
 - refined UI elements
 - a store built on [**Mobx**](https://mobxjs.github.io/mobx/)
+- refactored **Mobx** usage to be compatible with **create-react-app** (ie. no directives)
 - uses [**axios**](https://github.com/mzabriskie/axios) for all api calls
 - uses a custom notes server, [**faux-base**](https://faux-base.herokuapp.com)
 - a simple html5 pushstate mechanism
