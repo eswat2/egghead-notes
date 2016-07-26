@@ -1,4 +1,4 @@
 :
-npm install -g create-react-app
+npm install react-scripts
 npm run build
 node app.js
