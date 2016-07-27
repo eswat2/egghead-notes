@@ -10,13 +10,7 @@ const updateUser = action((username) => {
 
 const addNote = action((newNote) => {
   // update firebase with the new notes
-  fauxBase.update('notes', store.data.username, [ ...store.data.notes, newNote ])
-    .then((data) => {
-      console.log('-- api::notes [ update ]');
-      console.log(data);
-
-      store.data.notes = data.values;
-    });
+  fauxBase.update(store.data.username, newNote);
 });
 
 const _pushState = action((username) => {
@@ -31,13 +25,7 @@ const _fetchNotes = action((username) => {
   console.log(`-- fetchNotes:  ${username}`);
   store.data.notes = [];
   if (username) {
-    fauxBase.get('notes', username)
-      .then((data) => {
-        console.log('-- api::notes [ get ]');
-        console.log(data);
-
-        store.data.notes = data.values;
-      })
+    fauxBase.get(username);
   }
 });
 

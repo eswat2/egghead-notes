@@ -1,6 +1,9 @@
 import { observable } from 'mobx';
 
-const USER_KEY  = 'AppStore.username';
+const USER_KEY   = 'AppStore.username';
+const TRUNC_PATH = (str, pattern) => {
+  return (str.indexOf(pattern) !== -1) ? str.slice(str.indexOf(pattern) + pattern.length) : null;
+}
 
 class AppStore {
   //
@@ -20,6 +23,16 @@ class AppStore {
     popState:null
   });
 
+  init() {
+    let user = localStorage.getItem(USER_KEY);
+    let parm = TRUNC_PATH(location.pathname, '/profile/');
+    let who  = ( user ? (parm && parm !== user ? parm : user) : null );
+    console.log(`-- initStore:  ${who}`);
+    // console.log(location);
+    // console.log(parm);
+    singleton.data.username = who;
+  }
+
   saveUser(username) {
     if (username !== null) {
       console.log(`-- saveUser:  ${username}`);
@@ -29,21 +42,5 @@ class AppStore {
 }
 
 const singleton = new AppStore();
-
-const _truncatePath  = (str, pattern) => {
-  return (str.indexOf(pattern) !== -1) ? str.slice(str.indexOf(pattern) + pattern.length) : null;
-}
-
-const initStore = () => {
-  let user = localStorage.getItem(USER_KEY);
-  let parm = _truncatePath(location.pathname, '/profile/');
-  let who  = ( user ? (parm && parm !== user ? parm : user) : null );
-  console.log(`-- initStore:  ${who}`);
-  // console.log(location);
-  // console.log(parm);
-  singleton.data.username = who;
-}
-
-initStore();
 
 export default singleton;

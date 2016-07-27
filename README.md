@@ -2,7 +2,7 @@
 [![Dependency Status](https://dependencyci.com/github/eswat2/egghead-notes/badge)](https://dependencyci.com/github/eswat2/egghead-notes)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=egghead-notes&style=flat&svg=1)](https://egghead-notes.herokuapp.com)
 
-I am now using a custom notes server, [**faux-base.herokuapp.com**](https://faux-base.herokuapp.com), to handle reading & writing notes.  The repo for that can be found here: [**faux-base**](https://github.com/eswat2/faux-base)
+I am now using a custom [**WebSockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) notes server, [**fire-notes.herokuapp.com**](https://fire-notes.herokuapp.com), to handle reading & writing notes.  The repo for that can be found here: [**fire-notes**](https://github.com/eswat2/fire-notes)
 
 ### Background:
 
@@ -15,7 +15,7 @@ I took the [**Build Your First React.js App**](https://egghead.io/courses/build-
 - a store built on [**Mobx**](https://mobxjs.github.io/mobx/)
 - refactored **Mobx** usage to be compatible with **create-react-app** (ie. no directives)
 - uses [**axios**](https://github.com/mzabriskie/axios) for all api calls
-- uses a custom notes server, [**faux-base**](https://faux-base.herokuapp.com)
+- uses [**WebSockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to talk to a custom notes server, [**fire-notes**](https://fire-notes.herokuapp.com)
 - a simple html5 pushstate mechanism
 - saves last valid username to local storage
 - initializes app from URL if it matches /profile/:username

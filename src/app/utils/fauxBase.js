@@ -1,21 +1,61 @@
-import axios from 'axios';
+import store from './store';
 
-const BASE_URI = 'https://faux-base.herokuapp.com';
+let WSS_URI = 'wss://fire-notes.herokuapp.com';
+let wss = null;
 
-function getData(type, tag){
-  return axios.get(`${BASE_URI}/${type}/${tag}`)
-    .then((response) => ({ values: response.data.values }))
-    .catch((error) => ({ values: [] }));
+let onOpen = (evt) => {
+  console.log('-- wss: Open');
+  store.init();
 }
 
-function updateData(type, id, values){
-  return axios.post(`${BASE_URI}/${type}`, { id, values })
-    .then((response) => ({ values: response.data.values }))
-    .catch((error) => ({ values: [] }));
+let onClose = (evt) => {
+  console.log('-- wss: Close');
 }
 
-const fauxBase = {
+let onMessage = (evt) => {
+  if (evt.data == 'ping') {
+    // console.log(evt.data);
+  }
+  else {
+    console.log('-- wss: ' + evt.data);
+    var data = JSON.parse(evt.data);
+    // console.log(data);
+    if (data.id == store.data.username) {
+      store.data.notes = data.values;
+    }
+  }
+}
+
+let onError = (evt) => {
+  console.log('-- wss: Error');
+}
+
+let initWebSocket = () => {
+  wss = new WebSocket(WSS_URI);
+
+  wss.onopen    = (evt) => { onOpen(evt)    };
+  wss.onclose   = (evt) => { onClose(evt)   };
+  wss.onmessage = (evt) => { onMessage(evt) };
+  wss.onerror   = (evt) => { onError(evt)   };
+}
+
+let getData = (id) => {
+  wss.send(JSON.stringify({ type:'GET', id }));
+}
+
+let getKeys = () => {
+  wss.send(JSON.stringify({ type:'KEYS' }));
+}
+
+let updateData = (id, value) => {
+  wss.send(JSON.stringify({ type:'POST', id, value }))
+}
+
+initWebSocket();
+
+let fauxBase = {
   get: getData,
+  keys: getKeys,
   update: updateData
 }
 
