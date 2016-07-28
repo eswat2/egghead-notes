@@ -13,14 +13,15 @@ let onClose = (evt) => {
 }
 
 let onMessage = (evt) => {
-  if (evt.data == 'ping') {
+  if (evt.data === 'ping') {
     // console.log(evt.data);
+    store.ping();
   }
   else {
     console.log('-- wss: ' + evt.data);
     var data = JSON.parse(evt.data);
     // console.log(data);
-    if (data.id == store.data.username) {
+    if (data.id === store.data.username) {
       store.data.notes = data.values;
     }
   }
@@ -53,10 +54,10 @@ let updateData = (id, value) => {
 
 initWebSocket();
 
-let fauxBase = {
+let fireNotes = {
   get: getData,
   keys: getKeys,
   update: updateData
 }
 
-export default fauxBase;
+export default fireNotes;

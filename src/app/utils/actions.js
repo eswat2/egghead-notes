@@ -1,5 +1,5 @@
 import { action, autorun } from 'mobx';
-import fauxBase from './fauxBase';
+import fireNotes from './fireNotes';
 import getGithubInfo from './helpers';
 import store from './store';
 
@@ -10,7 +10,7 @@ const updateUser = action((username) => {
 
 const addNote = action((newNote) => {
   // update firebase with the new notes
-  fauxBase.update(store.data.username, newNote);
+  fireNotes.update(store.data.username, newNote);
 });
 
 const _pushState = action((username) => {
@@ -25,7 +25,7 @@ const _fetchNotes = action((username) => {
   console.log(`-- fetchNotes:  ${username}`);
   store.data.notes = [];
   if (username) {
-    fauxBase.get(username);
+    fireNotes.get(username);
   }
 });
 

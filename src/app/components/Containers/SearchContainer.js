@@ -4,7 +4,7 @@ import SearchGithub from '../SearchGithub';
 const SearchContainer = () => {
   // console.log('-- render:  SearchContainer');
   return (
-    <nav className="navbar navbar-default" role="navigation">
+    <nav className="navbar navbar-default" role="navigation"  style={{marginBottom: 0,borderRadius:0}}>
       <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
         <SearchGithub />
       </div>
