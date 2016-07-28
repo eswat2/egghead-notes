@@ -3,6 +3,11 @@ import fireNotes from './fireNotes';
 import getGithubInfo from './helpers';
 import store from './store';
 
+const USER_KEY   = 'AppStore.username';
+const trunc_path = (str, pattern) => {
+  return (str.indexOf(pattern) !== -1) ? str.slice(str.indexOf(pattern) + pattern.length) : null;
+}
+
 const updateUser = action((username) => {
   console.log(`-- updateUser:  ${username}`);
   store.data.username = username;
@@ -12,6 +17,51 @@ const addNote = action((newNote) => {
   // update firebase with the new notes
   fireNotes.update(store.data.username, newNote);
 });
+
+const initStore = action(() => {
+  let user = localStorage.getItem(USER_KEY);
+  let parm = trunc_path(location.pathname, '/profile/');
+  let who  = ( user ? (parm && parm !== user ? parm : user) : null );
+  console.log(`-- initStore:  ${who}`);
+  // console.log(location);
+  // console.log(parm);
+  store.data.username = who;
+
+  store.data.kounter = 0;
+  store.data.ktype   = 'info';
+});
+
+let ticker = 0;
+
+const ping = action(() => {
+  let kount = store.data.kounter;
+  if (ticker === 5) {
+    ticker = 0;
+    store.data.kounter = (kount === 100) ? 0 : kount + 1;
+  }
+  else {
+    ticker++;
+  }
+});
+
+const offline = action(() => {
+  store.data.kounter = 100;
+  store.data.ktype   = 'danger';
+});
+
+const newData = action((data) => {
+  if (data.id === store.data.username) {
+    store.data.notes = data.values;
+  }
+});
+
+const _saveUser = (username) => {
+  // NOTE:  this is not an action since it doesn't manipulate the store...
+  if (username !== null) {
+    console.log(`-- saveUser:  ${username}`);
+    localStorage.setItem(USER_KEY, username);
+  }
+}
 
 const _pushState = action((username) => {
   if (store.data.popState == null) {
@@ -44,7 +94,7 @@ const _fetchGithub = action((username) => {
         store.data.error = data.error;
 
         if (!store.data.error) {
-          store.saveUser(username);
+          _saveUser(username);
           _pushState(username);
 
           if (!store.data.tags.includes(username)) {
@@ -74,7 +124,11 @@ const autoPop    = autorun(() => _popHandler(store.data.popState) );
 
 const actions = {
   addNote,
-  updateUser
+  updateUser,
+  initStore,
+  ping,
+  offline,
+  newData
 };
 
 export default actions;

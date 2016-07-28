@@ -1,29 +1,28 @@
-import store from './store';
+import actions from './actions';
 
 let WSS_URI = 'wss://fire-notes.herokuapp.com';
 let wss = null;
 
 let onOpen = (evt) => {
   console.log('-- wss: Open');
-  store.init();
+  actions.initStore();
 }
 
 let onClose = (evt) => {
   console.log('-- wss: Close');
+  actions.offline();
 }
 
 let onMessage = (evt) => {
   if (evt.data === 'ping') {
     // console.log(evt.data);
-    store.ping();
+    actions.ping();
   }
   else {
     console.log('-- wss: ' + evt.data);
     var data = JSON.parse(evt.data);
     // console.log(data);
-    if (data.id === store.data.username) {
-      store.data.notes = data.values;
-    }
+    actions.newData(data);
   }
 }
 
