@@ -14,7 +14,7 @@ const Keys = observer(() => {
   const keys = store.data.keys;
   return (
     <div>
-      {keys.map((tag,index) => <span className="label label-warning" style={KEYS_STYLE} key={index} onClick={() => actions.updateUser(tag)}>{tag}</span>)}
+      {keys.map((tag,index) => <span className="label label-primary" style={KEYS_STYLE} key={index} onClick={() => actions.updateUser(tag)}>{tag}</span>)}
     </div>
   )
 })
