@@ -9,8 +9,9 @@ const trunc_path = (str, pattern) => {
 }
 
 const updateUser = action((username) => {
-  console.log(`-- updateUser:  ${username}`);
-  store.data.username = username;
+  let user = username.toLowerCase();
+  console.log(`-- updateUser:  ${user}`);
+  store.data.username = user;
 });
 
 const addNote = action((newNote) => {
@@ -25,7 +26,7 @@ const initStore = action(() => {
   console.log(`-- initStore:  ${who}`);
   // console.log(location);
   // console.log(parm);
-  store.data.username = who;
+  store.data.username = (who ? who.toLowerCase() : null);
 
   store.data.kounter = 0;
   store.data.ktype   = 'info';
