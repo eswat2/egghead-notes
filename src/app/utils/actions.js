@@ -33,6 +33,8 @@ const initStore = action(() => {
 });
 
 let ticker = 0;
+let ticks  = 0;
+let klock  = null;
 
 const ping = action(() => {
   let kount = store.data.kounter;
@@ -43,6 +45,7 @@ const ping = action(() => {
   else {
     ticker++;
   }
+  ticks++;
 });
 
 const offline = action(() => {
@@ -55,6 +58,25 @@ const newData = action((data) => {
     store.data.notes = data.values;
   }
 });
+
+let last_kount = 0;
+
+const _verifyWSS = action(() => {
+  // console.log('-- verifyWSS:  ' + ticks + ', ' + last_kount);
+  if (ticks > 0 && ticks !== last_kount) {
+    last_kount = ticks;
+  }
+  else {
+    clearInterval(klock);
+    offline();
+  }
+});
+
+const startKlock = () => {
+  klock = setInterval(() => {
+    _verifyWSS();
+  }, 10000);
+}
 
 const _saveUser = (username) => {
   // NOTE:  this is not an action since it doesn't manipulate the store...
@@ -129,7 +151,8 @@ const actions = {
   initStore,
   ping,
   offline,
-  newData
+  newData,
+  startKlock
 };
 
 export default actions;

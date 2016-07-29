@@ -6,6 +6,7 @@ let wss = null;
 let onOpen = (evt) => {
   console.log('-- wss: Open');
   actions.initStore();
+  actions.startKlock();
 }
 
 let onClose = (evt) => {
