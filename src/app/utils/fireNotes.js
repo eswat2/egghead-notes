@@ -3,10 +3,23 @@ import actions from './actions';
 let WSS_URI = 'wss://fire-notes.herokuapp.com';
 let wss = null;
 
+let getData = (id) => {
+  wss.send(JSON.stringify({ type:'GET', id }));
+}
+
+let getKeys = () => {
+  wss.send(JSON.stringify({ type:'KEYS' }));
+}
+
+let updateData = (id, value) => {
+  wss.send(JSON.stringify({ type:'POST', id, value }))
+}
+
 let onOpen = (evt) => {
   console.log('-- wss: Open');
   actions.initStore();
   actions.startKlock();
+  getKeys();
 }
 
 let onClose = (evt) => {
@@ -38,18 +51,6 @@ let initWebSocket = () => {
   wss.onclose   = (evt) => { onClose(evt)   };
   wss.onmessage = (evt) => { onMessage(evt) };
   wss.onerror   = (evt) => { onError(evt)   };
-}
-
-let getData = (id) => {
-  wss.send(JSON.stringify({ type:'GET', id }));
-}
-
-let getKeys = () => {
-  wss.send(JSON.stringify({ type:'KEYS' }));
-}
-
-let updateData = (id, value) => {
-  wss.send(JSON.stringify({ type:'POST', id, value }))
 }
 
 initWebSocket();

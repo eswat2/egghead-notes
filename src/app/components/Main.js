@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ErrorContainer from './Containers/ErrorContainer';
+import KeysContainer from './Containers/KeysContainer';
 import NavigatorContainer from './Containers/NavigatorContainer';
 import ProfileContainer from './Containers/ProfileContainer';
 import ProgressContainer from './Containers/ProgressContainer';
@@ -12,6 +13,7 @@ const Main = () => {
     <div className="main-container">
       <SearchContainer />
       <ProgressContainer />
+      <KeysContainer />
       <ErrorContainer />
       <NavigatorContainer />
       <ProfileContainer />

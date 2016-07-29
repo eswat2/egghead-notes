@@ -19,6 +19,7 @@ class AppStore {
     tags:[],
     kounter:100,
     ktype:'danger',
+    keys:[],
     popState:null
   });
 }

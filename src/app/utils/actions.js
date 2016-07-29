@@ -54,8 +54,13 @@ const offline = action(() => {
 });
 
 const newData = action((data) => {
-  if (data.id === store.data.username) {
-    store.data.notes = data.values;
+  if (data.type === 'KEYS') {
+    store.data.keys = data.keys;
+  }
+  if (data.type === 'DATA') {
+    if (data.id === store.data.username) {
+      store.data.notes = data.values;
+    }
   }
 });
 
