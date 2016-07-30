@@ -6,7 +6,7 @@ import store from '../../utils/store';
 
 const ErrorContainer = observer(() => {
   // console.log('-- render:  ErrorContainer');
-  const error = store.data.error;
+  const error = store.error.value;
   return (
     <div className="container">
       { error === true ? <Danger salute="Error" message="user does not exist..." /> : null }

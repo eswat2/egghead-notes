@@ -11,12 +11,12 @@ const trunc_path = (str, pattern) => {
 const updateUser = action((username) => {
   let user = username.toLowerCase();
   console.log(`-- updateUser:  ${user}`);
-  store.data.username = user;
+  store.username.value = user;
 });
 
 const addNote = action((newNote) => {
   // update firebase with the new notes
-  fireNotes.update(store.data.username, newNote);
+  fireNotes.update(store.username.value, newNote);
 });
 
 const initStore = action(() => {
@@ -26,10 +26,10 @@ const initStore = action(() => {
   console.log(`-- initStore:  ${who}`);
   // console.log(location);
   // console.log(parm);
-  store.data.username = (who ? who.toLowerCase() : null);
+  store.username.value = (who ? who.toLowerCase() : null);
 
-  store.data.kounter = 0;
-  store.data.ktype   = 'info';
+  store.kounter.value = 0;
+  store.ktype.value   = 'info';
 });
 
 let ticker = 0;
@@ -37,10 +37,10 @@ let ticks  = 0;
 let klock  = null;
 
 const ping = action(() => {
-  let kount = store.data.kounter;
+  let kount = store.kounter.value;
   if (ticker === 5) {
     ticker = 0;
-    store.data.kounter = (kount === 100) ? 0 : kount + 1;
+    store.kounter.value = (kount === 100) ? 0 : kount + 1;
   }
   else {
     ticker++;
@@ -49,17 +49,17 @@ const ping = action(() => {
 });
 
 const offline = action(() => {
-  store.data.kounter = 100;
-  store.data.ktype   = 'danger';
+  store.kounter.value = 100;
+  store.ktype.value   = 'danger';
 });
 
 const newData = action((data) => {
   if (data.type === 'KEYS') {
-    store.data.keys = data.keys;
+    store.keys.value = data.keys;
   }
   if (data.type === 'DATA') {
-    if (data.id === store.data.username) {
-      store.data.notes = data.values;
+    if (data.id === store.username.value) {
+      store.notes.value = data.values;
     }
   }
 });
@@ -92,16 +92,16 @@ const _saveUser = (username) => {
 }
 
 const _pushState = action((username) => {
-  if (store.data.popState == null) {
+  if (store.popState.value == null) {
     history.pushState({ username }, username, `/profile/${username}`);
   } else {
-    store.data.popState = null;
+    store.popState.value = null;
   }
 });
 
 const _fetchNotes = action((username) => {
   console.log(`-- fetchNotes:  ${username}`);
-  store.data.notes = [];
+  store.notes.value = [];
   if (username) {
     fireNotes.get(username);
   }
@@ -109,31 +109,31 @@ const _fetchNotes = action((username) => {
 
 const _fetchGithub = action((username) => {
   console.log(`-- fetchGithub:  ${username}`);
-  store.data.bio   = {};
-  store.data.repos = [];
+  store.bio.value   = {};
+  store.repos.value = [];
   if (username) {
     getGithubInfo(username)
       .then((data) => {
         console.log('-- api::githubInfo');
         console.log(data);
 
-        store.data.bio   = data.bio;
-        store.data.repos = data.repos;
-        store.data.error = data.error;
+        store.bio.value   = data.bio;
+        store.repos.value = data.repos;
+        store.error.value = data.error;
 
-        if (!store.data.error) {
+        if (!store.error.value) {
           _saveUser(username);
           _pushState(username);
 
-          if (!store.data.tags.includes(username)) {
-            let list = [ ...store.data.tags, username ].sort();
-            store.data.tags = list;
+          if (!store.tags.value.includes(username)) {
+            let list = [ ...store.tags.value, username ].sort();
+            store.tags.value = list;
           }
         }
       })
   }
   else {
-    store.data.popState = null;
+    store.popState.value = null;
   }
 });
 
@@ -144,11 +144,11 @@ const _popHandler = action((pop) => {
 });
 
 // eslint-disable-next-line
-const autoGithub = autorun(() => _fetchGithub(store.data.username) );
+const autoGithub = autorun(() => _fetchGithub(store.username.value) );
 // eslint-disable-next-line
-const autoNotes  = autorun(() => _fetchNotes(store.data.username) );
+const autoNotes  = autorun(() => _fetchNotes(store.username.value) );
 // eslint-disable-next-line
-const autoPop    = autorun(() => _popHandler(store.data.popState) );
+const autoPop    = autorun(() => _popHandler(store.popState.value) );
 
 const actions = {
   addNote,

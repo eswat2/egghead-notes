@@ -5,7 +5,7 @@ import store from '../../utils/store';
 
 const Repos = observer(() => {
   // console.log('-- render:  Repos');
-  const repos = store.data.repos;
+  const repos = store.repos.value;
   return (
     <div>
       <h3>User Repos</h3>

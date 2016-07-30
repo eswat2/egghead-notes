@@ -5,7 +5,7 @@ import store from '../../utils/store';
 
 const NotesList = observer(() => {
   // console.log('-- render:  NotesList');
-  const notes = store.data.notes;
+  const notes = store.notes.value;
   return (
     <ul className='list-group'>
       {notes.map((note,index) => <li className="list-group-item" key={index}>{note}</li>)}

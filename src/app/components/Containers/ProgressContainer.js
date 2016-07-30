@@ -5,10 +5,10 @@ import store from '../../utils/store';
 
 const ProgressContainer = observer(() => {
   // console.log('-- render:  ProgressContainer');
-  let klassNames = 'progress-bar progress-bar-' + store.data.ktype;
+  let klassNames = 'progress-bar progress-bar-' + store.ktype.value;
   return (
     <div className="progress" style={{height:2,borderRadius:0}}>
-      <div className={klassNames} role="progressbar" style={{width: store.data.kounter + '%'}}>
+      <div className={klassNames} role="progressbar" style={{width: store.kounter.value + '%'}}>
       </div>
     </div>
   )

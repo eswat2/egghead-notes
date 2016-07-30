@@ -1,29 +1,16 @@
 import { observable } from 'mobx';
 
-let singleton = null;
+let store = {
+  error:    observable({value:false}),
+  username: observable({value:null}),
+  bio:      observable({value:{}}),
+  repos:    observable({value:[]}),
+  notes:    observable({value:[]}),
+  tags:     observable({value:[]}),
+  kounter:  observable({value:100}),
+  ktype:    observable({value:'warning'}),
+  keys:     observable({value:[]}),
+  popState: observable({value:null})
+};
 
-class AppStore {
-  //
-  // NOTE:  this is the observable data for the store...
-  //
-  // ** using the function wrapper for observable to make it
-  //    compatible with the new create-react-app tool
-  //
-  //
-  data = observable({
-    error:false,
-    username:null,
-    bio:{},
-    repos:[],
-    notes:[],
-    tags:[],
-    kounter:100,
-    ktype:'danger',
-    keys:[],
-    popState:null
-  });
-}
-
-singleton = new AppStore();
-
-export default singleton;
+export default store;

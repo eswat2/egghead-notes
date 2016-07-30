@@ -7,7 +7,7 @@ window.addEventListener('popstate', function(event) {
   const username = (event.state && event.state.username ? event.state.username : null);
   console.log(`-- popstate:  ${username}`);
 
-  store.data.popState = { username };
+  store.popState.value = { username };
 });
 
 console.log('-- App');

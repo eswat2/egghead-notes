@@ -9,7 +9,7 @@ const chk4num = (val) => {
 
 const UserProfile = observer(() => {
   // console.log('-- render:  UserProfile');
-  const bio = store.data.bio;
+  const bio = store.bio.value;
   return (
     <div>
       <h3>User Profile</h3>
