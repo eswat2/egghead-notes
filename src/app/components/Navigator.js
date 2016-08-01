@@ -6,6 +6,7 @@ import store from '../utils/store';
 
 const NAV_STYLE = {
   marginRight: 2,
+  marginTop: 2,
   display: 'inline-block',
   padding: 5,
   paddingRight: 6,
