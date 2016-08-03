@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Main from './components/Main';
-import store from './utils/store';
+import actions from './utils/actions';
 
 window.addEventListener('popstate', function(event) {
   const username = (event.state && event.state.username ? event.state.username : null);
   console.log(`-- popstate:  ${username}`);
 
-  store.popState.value = { username };
+  actions.setPopState({ username });
 });
 
 console.log('-- App');

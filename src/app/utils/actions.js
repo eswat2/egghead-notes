@@ -1,25 +1,27 @@
-import { action, autorun } from 'mobx';
+import { action, autorun, useStrict } from 'mobx';
 import fireNotes from './fireNotes';
 import getGithubInfo from './helpers';
 import store from './store';
+
+useStrict(true);
 
 const USER_KEY   = 'AppStore.username';
 const trunc_path = (str, pattern) => {
   return (str.indexOf(pattern) !== -1) ? str.slice(str.indexOf(pattern) + pattern.length) : null;
 }
 
-const updateUser = action((username) => {
+const updateUser = action('-- updateUser', (username) => {
   let user = username.toLowerCase();
   console.log(`-- updateUser:  ${user}`);
   store.username.value = user;
 });
 
-const addNote = action((newNote) => {
+const addNote = action('-- addNote', (newNote) => {
   // update firebase with the new notes
   fireNotes.update(store.username.value, newNote);
 });
 
-const initStore = action(() => {
+const initStore = action('-- initStore', () => {
   let user = localStorage.getItem(USER_KEY);
   let parm = trunc_path(location.pathname, '/profile/');
   let who  = ( user ? (parm && parm !== user ? parm : user) : null );
@@ -36,7 +38,7 @@ let ticker = 0;
 let ticks  = 0;
 let klock  = null;
 
-const ping = action(() => {
+const ping = action('-- ping', () => {
   let kount = store.kounter.value;
   if (ticker === 5) {
     ticker = 0;
@@ -48,12 +50,12 @@ const ping = action(() => {
   ticks++;
 });
 
-const offline = action(() => {
+const offline = action('-- offline', () => {
   store.kounter.value = 100;
   store.ktype.value   = 'danger';
 });
 
-const newData = action((data) => {
+const newData = action('-- newData', (data) => {
   if (data.type === 'KEYS') {
     store.keys.value = data.keys;
   }
@@ -64,9 +66,13 @@ const newData = action((data) => {
   }
 });
 
+const setPopState = action('-- setPopState', (data) => {
+  store.popState.value = data;
+});
+
 let last_kount = 0;
 
-const _verifyWSS = action(() => {
+const _verifyWSS = action('-- verifyWSS', () => {
   // console.log('-- verifyWSS:  ' + ticks + ', ' + last_kount);
   if (ticks > 0 && ticks !== last_kount) {
     last_kount = ticks;
@@ -91,7 +97,7 @@ const _saveUser = (username) => {
   }
 }
 
-const _pushState = action((username) => {
+const _pushState = action('-- pushState', (username) => {
   if (store.popState.value == null) {
     history.pushState({ username }, username, `/profile/${username}`);
   } else {
@@ -99,7 +105,7 @@ const _pushState = action((username) => {
   }
 });
 
-const _fetchNotes = action((username) => {
+const _fetchNotes = action('-- fetchNotes', (username) => {
   console.log(`-- fetchNotes:  ${username}`);
   store.notes.value = [];
   if (username) {
@@ -107,37 +113,35 @@ const _fetchNotes = action((username) => {
   }
 });
 
-const _fetchGithub = action((username) => {
+const newUserInfo = action('-- newUserInfo', (username, data) => {
+  store.bio.value   = data.bio;
+  store.repos.value = data.repos;
+  store.error.value = data.error;
+
+  if (!store.error.value) {
+    _saveUser(username);
+    _pushState(username);
+
+    if (!store.tags.value.includes(username)) {
+      let list = [ ...store.tags.value, username ].sort();
+      store.tags.value = list;
+    }
+  }
+});
+
+const _fetchGithub = action('-- fetchGithub', (username) => {
   console.log(`-- fetchGithub:  ${username}`);
   store.bio.value   = {};
   store.repos.value = [];
   if (username) {
-    getGithubInfo(username)
-      .then((data) => {
-        console.log('-- api::githubInfo');
-        console.log(data);
-
-        store.bio.value   = data.bio;
-        store.repos.value = data.repos;
-        store.error.value = data.error;
-
-        if (!store.error.value) {
-          _saveUser(username);
-          _pushState(username);
-
-          if (!store.tags.value.includes(username)) {
-            let list = [ ...store.tags.value, username ].sort();
-            store.tags.value = list;
-          }
-        }
-      })
+    getGithubInfo(username).then((data) => { newUserInfo(username, data); });
   }
   else {
     store.popState.value = null;
   }
 });
 
-const _popHandler = action((pop) => {
+const _popHandler = action('-- popHandler', (pop) => {
   if (pop) {
     updateUser(pop.username)
   }
@@ -152,12 +156,14 @@ const autoPop    = autorun(() => _popHandler(store.popState.value) );
 
 const actions = {
   addNote,
-  updateUser,
   initStore,
-  ping,
-  offline,
   newData,
-  startKlock
+  newUserInfo,
+  offline,
+  ping,
+  setPopState,
+  startKlock,
+  updateUser
 };
 
 export default actions;
