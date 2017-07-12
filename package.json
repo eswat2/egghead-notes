@@ -1,21 +1,25 @@
 {
   "name": "egghead-notes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
+  "engines": {
+    "node": "8.1.4",
+    "npm": "5.2.0"
+  },
   "devDependencies": {
-    "react-scripts": "0.2.3"
+    "react-scripts": "1.0.10"
   },
   "dependencies": {
-    "axios": "^0.14.0",
-    "babel-polyfill": "^6.13.0",
-    "express": "^4.14.0",
-    "express-history-api-fallback": "^2.0.0",
-    "express-sslify": "^1.1.0",
-    "mobx": "^2.5.1",
-    "mobx-react": "^3.5.5",
-    "mobx-react-devtools": "^4.2.5",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "axios": "0.16.2",
+    "babel-polyfill": "6.23.0",
+    "express": "4.15.3",
+    "express-history-api-fallback": "2.2.1",
+    "express-sslify": "1.2.0",
+    "mobx": "3.2.1",
+    "mobx-react": "4.2.2",
+    "mobx-react-devtools": "4.2.15",
+    "react": "15.6.1",
+    "react-dom": "15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
