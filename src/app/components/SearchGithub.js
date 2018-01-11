@@ -1,25 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import actions from '../utils/actions';
+import actions from '../utils/actions'
 
 class SearchGithub extends React.Component {
-  constructor(props, context) {
-    super(props);
-    this.input = null;
+  constructor(props) {
+    super(props)
+    this.input = null
 
-    this.getRef = (ref) => this._getRef(ref);
-    this.handleSubmit = (event) => this._handleSubmit(event);
-  }
-
-  _getRef(ref) {
-    this.input = ref;
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
-    const user = this.input.value;
-    this.input.value = '';
-    actions.updateUser(user);
+    this.getRef = (ref) => this._getRef(ref)
+    this.handleSubmit = (event) => this._handleSubmit(event)
   }
 
   render() {
@@ -29,14 +18,14 @@ class SearchGithub extends React.Component {
         <form onSubmit={this.handleSubmit} >
           <div className="form-group col-sm-12">
             <div className="input-group">
-              <div className="input-group-addon"><i className="fa fa-search"></i></div>
+              <div className="input-group-addon"><i className="fa fa-search" /></div>
               <input type="text" className="form-control" ref={this.getRef} placeholder="Username..." />
               <span className="input-group-btn">
                 <button
                   className="btn btn-primary"
                   type="submit"
-                  >
-                  Search Github <i className="fa fa-github"></i>
+                >
+                  Search Github <i className="fa fa-github" />
                 </button>
               </span>
             </div>
@@ -45,6 +34,17 @@ class SearchGithub extends React.Component {
       </div>
     )
   }
+
+  _getRef(ref) {
+    this.input = ref
+  }
+
+  _handleSubmit(event) {
+    event.preventDefault()
+    const user = this.input.value
+    this.input.value = ''
+    actions.updateUser(user)
+  }
 }
 
-export default SearchGithub;
+export default SearchGithub

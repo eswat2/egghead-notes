@@ -1,24 +1,13 @@
-import React from 'react';
-import actions from '../../utils/actions';
+import React from 'react'
+import actions from '../../utils/actions'
 
 class AddNote extends React.Component {
   constructor(props) {
-    super(props);
-    this.input = null;
+    super(props)
+    this.input = null
 
-    this.getRef = (ref) => this._getRef(ref);
-    this.handleSubmit = (event) => this._handleSubmit(event);
-  }
-
-  _getRef(ref) {
-    this.input = ref;
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
-    let newNote = this.input.value;
-    this.input.value = '';
-    actions.addNote(newNote);
+    this.getRef = (ref) => this._getRef(ref)
+    this.handleSubmit = (event) => this._handleSubmit(event)
   }
 
   render() {
@@ -26,22 +15,33 @@ class AddNote extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} >
         <div className="input-group">
-          <div className="input-group-addon"><i className="fa fa-chevron-right"></i></div>
+          <div className="input-group-addon"><i className="fa fa-chevron-right" /></div>
           <input
             type="text"
             className="form-control"
             placeholder="Note..."
             ref={this.getRef}
-            />
+          />
           <span className="input-group-btn">
             <button className="btn btn-warning" type="submit">
-              Add <i className="fa fa-sticky-note"></i>
+              Add <i className="fa fa-sticky-note" />
             </button>
           </span>
         </div>
       </form>
     )
   }
+
+  _getRef(ref) {
+    this.input = ref
+  }
+
+  _handleSubmit(event) {
+    event.preventDefault()
+    const newNote = this.input.value
+    this.input.value = ''
+    actions.addNote(newNote)
+  }
 }
 
-export default AddNote;
+export default AddNote

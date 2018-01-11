@@ -1,16 +1,19 @@
-import React from 'react';
+/* eslint no-console: "off" */
+import React from 'react'
 
-import Main from './components/Main';
-import actions from './utils/actions';
+import Main from './components/Main'
+import actions from './utils/actions'
 
-window.addEventListener('popstate', function(event) {
-  const username = (event.state && event.state.username ? event.state.username : null);
-  console.log(`-- popstate:  ${username}`);
+const handlePopState = (event) => {
+  const username = (event.state && event.state.username ? event.state.username : null)
+  console.log(`-- popstate:  ${username}`)
 
-  actions.setPopState({ username });
-});
+  actions.setPopState({ username })
+}
 
-console.log('-- App');
+window.addEventListener( 'popstate', handlePopState )
+
+console.log('-- App')
 
 const App = () => {
   // console.log('-- render:  App');
@@ -19,4 +22,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App

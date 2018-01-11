@@ -1,6 +1,6 @@
-import React from 'react';
-import Navigator from '../Navigator';
-import Success from '../Alerts/Success';
+import React from 'react'
+import Navigator from '../Navigator'
+import Success from '../Alerts/Success'
 
 const NavigatorContainer = () => {
   // console.log('-- render:  NavigatorContainer');
@@ -12,4 +12,4 @@ const NavigatorContainer = () => {
   )
 }
 
-export default NavigatorContainer;
+export default NavigatorContainer

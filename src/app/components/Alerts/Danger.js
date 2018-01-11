@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Danger = ({salute, message}) => {
   // console.log('-- render:  Danger');
@@ -12,4 +12,4 @@ Danger.propTypes = {
   message: React.PropTypes.string.isRequired
 }
 
-export default Danger;
+export default Danger

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { observer } from 'mobx-react';
-import store from '../../utils/store';
+import { observer } from 'mobx-react'
+import store from '../../utils/store'
 
 const chk4num = (val) => {
-  return (val != null && val > 0);
+  return (val !== null && val > 0)
 }
 
 const UserProfile = observer(() => {
   // console.log('-- render:  UserProfile');
-  const bio = store.bio.value;
+  const bio = store.bio.value
   return (
     <div>
       <h3>User Profile</h3>
@@ -25,6 +25,6 @@ const UserProfile = observer(() => {
       {bio.blog && <li className="list-group-item">Blog: <a href={bio.blog}> {bio.blog}</a></li>}
     </div>
   )
-});
+})
 
-export default UserProfile;
+export default UserProfile

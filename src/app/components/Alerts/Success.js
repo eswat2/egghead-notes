@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Success = ({salute, message}) => {
   // console.log('-- render:  Success');
@@ -12,4 +12,4 @@ Success.propTypes = {
   message: React.PropTypes.string.isRequired
 }
 
-export default Success;
+export default Success

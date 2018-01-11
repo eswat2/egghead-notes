@@ -1,10 +1,10 @@
-import React from 'react';
-import SearchGithub from '../SearchGithub';
+import React from 'react'
+import SearchGithub from '../SearchGithub'
 
 const SearchContainer = () => {
   // console.log('-- render:  SearchContainer');
   return (
-    <nav className="navbar navbar-default" role="navigation"  style={{marginBottom: 0,borderRadius:0}}>
+    <nav className="navbar navbar-default" role="navigation"  style={{marginBottom: 0, borderRadius: 0}}>
       <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
         <SearchGithub />
       </div>
@@ -12,4 +12,4 @@ const SearchContainer = () => {
   )
 }
 
-export default SearchContainer;
+export default SearchContainer

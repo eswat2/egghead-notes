@@ -1,64 +1,67 @@
-import actions from './actions';
+/* eslint no-console: "off" */
+import actions from './actions'
 
-let WSS_URI = 'wss://fire-notes.herokuapp.com';
-let wss = null;
+const WSS_URI = 'wss://fire-notes.herokuapp.com'
+let wss = null
 
-let getData = (id) => {
-  wss.send(JSON.stringify({ type:'GET', id }));
+const getData = (id) => {
+  wss.send(JSON.stringify({ type: 'GET', id }))
 }
 
-let getKeys = () => {
-  wss.send(JSON.stringify({ type:'KEYS' }));
+const getKeys = () => {
+  wss.send(JSON.stringify({ type: 'KEYS' }))
 }
 
-let updateData = (id, value) => {
-  wss.send(JSON.stringify({ type:'POST', id, value }))
+const updateData = (id, value) => {
+  wss.send(JSON.stringify({ type: 'POST', id, value }))
 }
 
-let onOpen = (evt) => {
-  console.log('-- wss: Open');
-  actions.initStore();
-  actions.startKlock();
-  getKeys();
+const onOpen = () => {
+  // (evt)
+  console.log('-- wss: Open')
+  actions.initStore()
+  actions.startKlock()
+  getKeys()
 }
 
-let onClose = (evt) => {
-  console.log('-- wss: Close');
-  actions.offline();
+const onClose = () => {
+  // (evt)
+  console.log('-- wss: Close')
+  actions.offline()
 }
 
-let onMessage = (evt) => {
+const onMessage = (evt) => {
   if (evt.data === 'ping') {
     // console.log(evt.data);
-    actions.ping();
-  }
-  else {
-    console.log('-- wss: ' + evt.data);
-    var data = JSON.parse(evt.data);
+    actions.ping()
+  } else {
+    console.log('-- wss: ' + evt.data)
+    const data = JSON.parse(evt.data)
     // console.log(data);
-    actions.newData(data);
+    actions.newData(data)
   }
 }
 
-let onError = (evt) => {
-  console.log('-- wss: Error');
+const onError = () => {
+  // (evt)
+  console.log('-- wss: Error')
 }
 
-let initWebSocket = () => {
-  wss = new WebSocket(WSS_URI);
+const initWebSocket = () => {
+  wss = new WebSocket(WSS_URI)
 
-  wss.onopen    = (evt) => { onOpen(evt)    };
-  wss.onclose   = (evt) => { onClose(evt)   };
-  wss.onmessage = (evt) => { onMessage(evt) };
-  wss.onerror   = (evt) => { onError(evt)   };
+  wss.onopen    = (evt) => { onOpen(evt)    }
+  wss.onclose   = (evt) => { onClose(evt)   }
+  wss.onmessage = (evt) => { onMessage(evt) }
+  wss.onerror   = (evt) => { onError(evt)   }
 }
 
-initWebSocket();
+initWebSocket()
 
-let fireNotes = {
+const fireNotes = {
   get: getData,
   keys: getKeys,
   update: updateData
 }
 
-export default fireNotes;
+export default fireNotes

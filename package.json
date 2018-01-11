@@ -2,28 +2,52 @@
   "name": "egghead-notes",
   "version": "0.0.2",
   "private": true,
+  "engineStrict": true,
   "engines": {
-    "node": "8.1.4",
-    "npm": "5.2.0"
+    "node": "9.4.0",
+    "npm": "5.6.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.2.1",
+    "babel-jest": "22.0.6",
+    "eslint": "4.15.0",
+    "eslint-find-rules": "3.1.1",
+    "eslint-formatter-pretty": "1.3.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-react": "7.5.1",
+    "eslint-watch": "3.1.3",
+    "husky": "0.14.3",
+    "lint-staged": "6.0.0",
+    "react-scripts": "1.0.17"
   },
   "dependencies": {
-    "axios": "0.16.2",
-    "babel-polyfill": "6.23.0",
-    "express": "4.15.3",
+    "axios": "0.17.1",
+    "babel-polyfill": "6.26.0",
+    "express": "4.16.2",
     "express-history-api-fallback": "2.2.1",
     "express-sslify": "1.2.0",
-    "mobx": "3.2.1",
-    "mobx-react": "4.2.2",
+    "mobx": "3.4.1",
+    "mobx-react": "4.3.5",
     "mobx-react-devtools": "4.2.15",
-    "react": "15.6.1",
-    "react-dom": "15.6.1"
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint app.js ./src --ext .js",
+    "lintr": "eslint app.js ./src --ext .js --fix",
+    "precommit": "lint-staged",
+    "report": "eslint app.js ./src --ext .js -f html > eslint.html"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

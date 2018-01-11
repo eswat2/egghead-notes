@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import Repos from './Github/Repos';
-import UserProfile from './Github/UserProfile';
-import Notes from './Notes/Notes';
+import Repos from './Github/Repos'
+import UserProfile from './Github/UserProfile'
+import Notes from './Notes/Notes'
 
 const Profile = () => {
   // console.log(`-- render:  Profile`);
@@ -21,4 +21,4 @@ const Profile = () => {
   )
 }
 
-export default Profile;
+export default Profile

@@ -1,5 +1,5 @@
-import React from 'react';
-import Keys from '../Keys';
+import React from 'react'
+import Keys from '../Keys'
 
 const KEYS_STYLE = {
   marginBottom: 10
@@ -14,4 +14,4 @@ const KeysContainer = () => {
   )
 }
 
-export default KeysContainer;
+export default KeysContainer
