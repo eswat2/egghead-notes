@@ -24,7 +24,7 @@ class AddNote extends React.Component {
           />
           <span className="input-group-btn">
             <button className="btn btn-warning" type="submit">
-              Add <i className="fa fa-sticky-note" />
+              Add <i className="fa fa-sticky-note" style={{ paddingLeft: 5 }} />
             </button>
           </span>
         </div>

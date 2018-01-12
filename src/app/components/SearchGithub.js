@@ -25,7 +25,7 @@ class SearchGithub extends React.Component {
                   className="btn btn-primary"
                   type="submit"
                 >
-                  Search Github <i className="fa fa-github" />
+                  Search Github <i className="fa fa-github fa-lg" style={{ paddingLeft: 5 }} />
                 </button>
               </span>
             </div>
