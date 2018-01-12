@@ -1,4 +1,5 @@
-/* eslint no-console: "off" */
+/* eslint            no-console: "off" */
+/* eslint no-restricted-globals: "off" */
 import { action, autorun, useStrict } from 'mobx'
 import fireNotes from './fireNotes'
 import getGithubInfo from './helpers'

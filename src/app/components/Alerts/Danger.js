@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Danger = ({salute, message}) => {
   // console.log('-- render:  Danger');
@@ -8,8 +9,8 @@ const Danger = ({salute, message}) => {
 }
 
 Danger.propTypes = {
-  salute: React.PropTypes.string.isRequired,
-  message: React.PropTypes.string.isRequired
+  salute: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
 export default Danger

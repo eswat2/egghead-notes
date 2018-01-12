@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Success = ({salute, message}) => {
   // console.log('-- render:  Success');
@@ -8,8 +9,8 @@ const Success = ({salute, message}) => {
 }
 
 Success.propTypes = {
-  salute: React.PropTypes.string.isRequired,
-  message: React.PropTypes.string.isRequired
+  salute: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
 export default Success
