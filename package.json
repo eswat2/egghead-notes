@@ -42,7 +42,6 @@
     "fix": "eslint app.js ./src --ext .js --fix",
     "lintr": "esw app.js ./src --ext .js --color",
     "watch": "npm run lintr -- --watch",
-    "precommit": "lint-staged",
     "report": "eslint app.js ./src --ext .js -f html > eslint.html"
   },
   "lint-staged": {
@@ -50,5 +49,10 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
