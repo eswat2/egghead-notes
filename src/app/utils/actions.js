@@ -1,11 +1,11 @@
 /* eslint            no-console: "off" */
 /* eslint no-restricted-globals: "off" */
-import { action, autorun, useStrict } from 'mobx'
+import { action, autorun, configure } from 'mobx'
 import fireNotes from './fireNotes'
 import getGithubInfo from './helpers'
 import store from './store'
 
-useStrict(true)
+configure({ enforceActions: true })
 
 const USER_KEY   = 'AppStore.username'
 const truncPath = (str, pattern) => {
