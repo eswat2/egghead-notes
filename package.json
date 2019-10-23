@@ -2,6 +2,11 @@
   "name": "egghead-notes",
   "version": "0.0.2",
   "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.12.0"
+  },
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-jest": "24.9.0",
