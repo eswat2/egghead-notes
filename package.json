@@ -36,7 +36,8 @@
     "lintr": "esw app.js ./src --ext .js --color",
     "watch": "npm run lintr -- --watch",
     "report": "eslint app.js ./src --ext .js -f html > eslint.html",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "open": "open https://egghead-notes.herokuapp.com"
   },
   "lint-staged": {
     "*.js": [
