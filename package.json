@@ -5,7 +5,7 @@
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-jest": "24.9.0",
-    "husky": "4.0.1",
+    "husky": "4.0.3",
     "lint-staged": "9.5.0",
     "react-scripts": "3.3.0"
   },
