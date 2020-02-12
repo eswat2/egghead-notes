@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-core": "6.26.3",
-    "husky": "4.2.1",
+    "husky": "4.2.2",
     "lint-staged": "10.0.7",
     "react-scripts": "3.3.1"
   },
