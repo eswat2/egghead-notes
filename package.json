@@ -6,7 +6,7 @@
     "babel-core": "6.26.3",
     "husky": "4.3.0",
     "lint-staged": "10.4.2",
-    "react-scripts": "3.4.4"
+    "react-scripts": "4.0.0"
   },
   "dependencies": {
     "axios": "0.20.0",
