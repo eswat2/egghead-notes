@@ -1,6 +1,6 @@
 {
   "name": "egghead-notes",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "devDependencies": {
     "babel-core": "6.26.3",
