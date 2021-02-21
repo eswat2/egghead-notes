@@ -11,7 +11,7 @@
     "express": "4.17.1",
     "express-history-api-fallback": "2.2.1",
     "express-sslify": "1.2.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "lodash.template": "^4.5.0",
     "mobx": "6.1.7",
     "mobx-react": "7.1.0",
