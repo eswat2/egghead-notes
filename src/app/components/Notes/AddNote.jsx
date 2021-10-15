@@ -1,5 +1,5 @@
-import React from 'react'
-import actions from '../../utils/actions'
+import React from "react"
+import actions from "../../utils/actions"
 
 class AddNote extends React.Component {
   constructor(props) {
@@ -13,9 +13,11 @@ class AddNote extends React.Component {
   render() {
     // console.log('-- render:  AddNote');
     return (
-      <form onSubmit={this.handleSubmit} >
+      <form onSubmit={this.handleSubmit}>
         <div className="input-group">
-          <div className="input-group-addon"><i className="fa fa-chevron-right" /></div>
+          <div className="input-group-addon">
+            <i className="fa fa-chevron-right" />
+          </div>
           <input
             type="text"
             className="form-control"
@@ -39,7 +41,7 @@ class AddNote extends React.Component {
   _handleSubmit(event) {
     event.preventDefault()
     const newNote = this.input.value
-    this.input.value = ''
+    this.input.value = ""
     actions.addNote(newNote)
   }
 }

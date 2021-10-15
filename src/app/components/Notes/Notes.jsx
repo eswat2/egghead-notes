@@ -1,9 +1,9 @@
-import React from 'react'
-import NotesList from './NotesList'
-import AddNote from './AddNote'
+import React from "react"
+import NotesList from "./NotesList"
+import AddNote from "./AddNote"
 
-import { observer } from 'mobx-react'
-import store from '../../utils/store'
+import { observer } from "mobx-react"
+import store from "../../utils/store"
 
 const Notes = observer(() => {
   // console.log('-- render:  Notes');

@@ -3,8 +3,8 @@
   "version": "0.0.3",
   "private": true,
   "devDependencies": {
-    "babel-core": "6.26.3",
-    "react-scripts": "4.0.3"
+    "@vitejs/plugin-react": "1.0.4",
+    "vite": "2.6.7"
   },
   "dependencies": {
     "axios": "0.23.0",
@@ -12,21 +12,21 @@
     "express-history-api-fallback": "2.2.1",
     "express-sslify": "1.2.0",
     "lodash": "4.17.21",
-    "lodash.template": "^4.5.0",
+    "lodash.template": "4.5.0",
     "mobx": "6.3.5",
     "mobx-react": "7.2.1",
     "mobx-react-devtools": "6.1.1",
+    "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "fix": "eslint app.js ./src --ext .js --fix",
-    "lintr": "esw app.js ./src --ext .js --color",
-    "watch": "npm run lintr -- --watch",
-    "report": "eslint app.js ./src --ext .js -f html > eslint.html",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "cc": "prettier --check './src/**/*.{js,jsx}'",
+    "format": "prettier --write './src/**/*.{js,jsx}'",
+    "spell": "cspell './**/*.{js,jsx}'",
     "deploy": "git push heroku master",
     "open": "open https://egghead-notes.herokuapp.com"
   },

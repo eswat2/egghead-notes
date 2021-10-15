@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import actions from '../utils/actions'
+import actions from "../utils/actions"
 
 class SearchGithub extends React.Component {
   constructor(props) {
@@ -15,17 +15,25 @@ class SearchGithub extends React.Component {
     // console.log('-- render:  SearchGithub');
     return (
       <div className="col-sm-12">
-        <form onSubmit={this.handleSubmit} >
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-12">
             <div className="input-group">
-              <div className="input-group-addon"><i className="fa fa-search" /></div>
-              <input type="text" className="form-control" ref={this.getRef} placeholder="Username..." />
+              <div className="input-group-addon">
+                <i className="fa fa-search" />
+              </div>
+              <input
+                type="text"
+                className="form-control"
+                ref={this.getRef}
+                placeholder="Username..."
+              />
               <span className="input-group-btn">
-                <button
-                  className="btn btn-primary"
-                  type="submit"
-                >
-                  Search Github <i className="fa fa-github fa-lg" style={{ paddingLeft: 5 }} />
+                <button className="btn btn-primary" type="submit">
+                  Search Github{" "}
+                  <i
+                    className="fa fa-github fa-lg"
+                    style={{ paddingLeft: 5 }}
+                  />
                 </button>
               </span>
             </div>
@@ -42,7 +50,7 @@ class SearchGithub extends React.Component {
   _handleSubmit(event) {
     event.preventDefault()
     const user = this.input.value
-    this.input.value = ''
+    this.input.value = ""
     actions.updateUser(user)
   }
 }
