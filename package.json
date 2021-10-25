@@ -3,8 +3,8 @@
   "version": "0.0.3",
   "private": true,
   "devDependencies": {
-    "@vitejs/plugin-react": "1.0.5",
-    "vite": "2.6.10"
+    "@vitejs/plugin-react": "1.0.6",
+    "vite": "2.6.11"
   },
   "dependencies": {
     "axios": "0.23.0",
