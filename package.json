@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@vitejs/plugin-react": "1.1.4",
-    "vite": "2.7.10"
+    "vite": "2.7.11"
   },
   "dependencies": {
     "axios": "0.24.0",
