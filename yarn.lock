@@ -1096,10 +1096,10 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vite@2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.2.tgz#bf233b96c77beae7c4a4674d76ece678588620f3"
-  integrity sha512-ScbfYsiG1N/xE2TnZWYWJ8aOFBQovEl4VLU+0dktxqXvqdAvcTOEUM5YqwaBkmNHSHUGHLPd92tuXFQ35wDkVw==
+vite@2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.3.tgz#29a887bc21a2f90043f800618cb6848e861a604c"
+  integrity sha512-R9IrnWGallcXvOeWa1AA7CH9MdW/9X+cj3c11IHcq98OkNSzWzwb0dd69DvEZTIdxJNOZL3kHRCWC7L2QH0sNw==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.12"
