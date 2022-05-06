@@ -14,7 +14,7 @@
     "lodash": "4.17.21",
     "lodash.template": "4.5.0",
     "mobx": "6.5.0",
-    "mobx-react": "7.3.0",
+    "mobx-react": "7.4.0",
     "mobx-react-devtools": "6.1.1",
     "prop-types": "15.8.1",
     "react": "18.1.0",
